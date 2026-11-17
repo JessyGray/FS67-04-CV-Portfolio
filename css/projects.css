@@ -49,7 +49,7 @@
     .modal[open] .modal__panel { display: flex; flex-direction: column; }
     .modal__bar, .modal__body { flex: none; }
     .modal[open] .modal__media { position: relative; flex: 0 1 min(54vw, 60dvh); min-height: 140px; height: auto; }
-    .modal[open] .modal__media img { position: absolute; inset: 1.5rem; width: calc(100% - 3rem); height: calc(100% - 3rem); }
+    .modal[open] .modal__media img { position: absolute; top: 1.5rem; left: 1.5rem; width: calc(100% - 3rem); height: calc(100% - 3rem); }
     .modal--no-media[open] .modal__media { display: none; }
 }
 @media (max-width: 980px) { .toolbar { align-items: start; flex-direction: column; } .search { width: 100%; } .search input { width: 100%; } }

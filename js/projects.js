@@ -91,26 +91,39 @@
             .includes(state.query);
     }
 
+    let revealsKilled = false;
+
     function apply(animate) {
+        const before = new Set(cards.filter((card) => card.style.display !== 'none'));
+        const entering = [];
         let visible = 0;
 
         // Cards stay in normal flow the whole time, so the page height never collapses
         // and the footer can not slide over a card while the filter animates.
-        if (window.gsap) gsap.killTweensOf(cards);
         cards.forEach((card) => {
             const show = matches(projects.find((p) => p.id === card.dataset.id));
             card.style.display = show ? '' : 'none';
-            if (show) visible++;
-            if (window.gsap) gsap.set(card, { clearProps: 'transform,opacity,visibility' });
+            if (!show) return;
+            visible++;
+            if (!before.has(card)) entering.push(card);
         });
 
         emptyEl.hidden = visible > 0;
         if (countEl) countEl.textContent = visible;
 
-        if (animate && window.gsap && !site.reduceMotion) {
-            gsap.fromTo(cards.filter((card) => card.style.display !== 'none'),
-                { opacity: 0, y: 24 },
-                { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' });
+        if (animate && window.gsap) {
+            // After the first filter change the scroll reveals from motion.js would play a second time, so drop them.
+            if (!revealsKilled && window.ScrollTrigger) {
+                ScrollTrigger.getAll().filter((t) => cards.includes(t.trigger)).forEach((t) => t.kill());
+                revealsKilled = true;
+            }
+            gsap.killTweensOf(cards);
+            gsap.set(cards, { clearProps: 'transform,opacity,visibility' });
+            if (entering.length && !site.reduceMotion) {
+                gsap.fromTo(entering,
+                    { opacity: 0, y: 24 },
+                    { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' });
+            }
         }
         if (window.ScrollTrigger) ScrollTrigger.refresh();
         site.lenis?.resize();
