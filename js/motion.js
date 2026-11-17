@@ -19,7 +19,7 @@
     }
 
     const hasScrollTrigger = typeof window.ScrollTrigger !== 'undefined';
-    gsap.registerPlugin(...[window.ScrollTrigger, window.Flip].filter(Boolean));
+    gsap.registerPlugin(...[window.ScrollTrigger].filter(Boolean));
 
     const heroLines = $$('[data-hero-line]');
     const heroDetails = $$('[data-hero]');

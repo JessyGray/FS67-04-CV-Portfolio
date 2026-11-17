@@ -92,32 +92,28 @@
     }
 
     function apply(animate) {
-        const canFlip = animate && window.Flip && !site.reduceMotion;
-        const flipState = canFlip ? Flip.getState(cards) : null;
         let visible = 0;
 
+        // Cards stay in normal flow the whole time, so the page height never collapses
+        // and the footer can not slide over a card while the filter animates.
+        if (window.gsap) gsap.killTweensOf(cards);
         cards.forEach((card) => {
             const show = matches(projects.find((p) => p.id === card.dataset.id));
             card.style.display = show ? '' : 'none';
             if (show) visible++;
+            if (window.gsap) gsap.set(card, { clearProps: 'transform,opacity,visibility' });
         });
 
         emptyEl.hidden = visible > 0;
         if (countEl) countEl.textContent = visible;
 
-        if (canFlip) {
-            Flip.from(flipState, {
-                duration: 0.5,
-                ease: 'power2.inOut',
-                absolute: true,
-                scale: true,
-                onEnter: (els) => gsap.fromTo(els, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out' }),
-                onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.92, duration: 0.3 }),
-                onComplete: () => window.ScrollTrigger && ScrollTrigger.refresh()
-            });
-        } else if (window.ScrollTrigger) {
-            ScrollTrigger.refresh();
+        if (animate && window.gsap && !site.reduceMotion) {
+            gsap.fromTo(cards.filter((card) => card.style.display !== 'none'),
+                { opacity: 0, y: 24 },
+                { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' });
         }
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+        site.lenis?.resize();
     }
 
     function setFilter(value) {

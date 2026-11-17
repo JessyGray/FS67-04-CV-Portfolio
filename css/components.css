@@ -24,10 +24,7 @@
 .chips li { border-bottom: 1px solid var(--line); padding: .5rem 0; margin-right: 1.2rem; font-size: 1rem; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem 2rem; }
 .card { min-width: 0; position: relative; }
-.card__media { position: relative; aspect-ratio: 36 / 25; display: grid; align-items: center; padding: 1.7rem; overflow: hidden; background: var(--stage); border-radius: var(--radius-m); }
-.card[data-id="izmailovsky-dvorik"] .card__media { background: #dfd5c4; }
-.card[data-id="autoparts-workshop"] .card__media { background: #d9dfe2; }
-.card[data-id="orvekta"] .card__media { background: #d8dbd6; }
+.card__media { position: relative; aspect-ratio: 36 / 25; display: grid; align-items: center; border-radius: var(--radius-m); }
 .card__media img { width: 100%; aspect-ratio: 36 / 25; object-fit: contain; border-radius: 4px; box-shadow: 0 10px 28px #1d281824; transition: transform .9s var(--ease-out), box-shadow .9s; }
 .card:hover .card__media img, .card:focus-within .card__media img { transform: translateY(-5px); box-shadow: 0 20px 35px #1d281835; }
 .card__arrow { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; position: absolute; bottom: 12px; right: 12px; background: var(--surface); color: var(--fg); transition: background var(--dur), color var(--dur), transform var(--dur); }
@@ -50,7 +47,6 @@
 .toast.is-visible { transform: translate(-50%,0); opacity: 1; }
 @media (max-width: 600px) {
     .project-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .card__media { padding: 1.1rem; }
     .card__info { grid-template-columns: 1fr; }
     .card__type { grid-row: 2; }
 }
