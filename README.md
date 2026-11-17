@@ -40,7 +40,6 @@ assets/              favicon and screenshots
     cover: 'assets/img/projects/weather-app.jpg',
     tags: ['JavaScript', 'Fetch API'],
     live: 'https://example.vercel.app',
-    repo: 'https://github.com/JessyGray/weather-app',
     featured: false
 }
 ```

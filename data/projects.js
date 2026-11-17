@@ -8,7 +8,7 @@
   role        what I did on the project
   status      optional, e.g. 'In development'
   cover       screenshot path (leave empty if there is none yet)
-  live, repo  links (leave empty if there is none)
+  live        link to the site (leave empty if there is none)
   note        optional line under the links
   featured    true = also shown on the CV page (first three)
 */
@@ -26,7 +26,6 @@ const PROJECTS = [
         cover: 'assets/img/projects/noir-gloss.jpg',
         tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Supabase'],
         live: 'https://noir-gloss.vercel.app',
-        repo: 'https://github.com/JessyGray/noir-gloss',
         featured: true
     },
     {
@@ -41,8 +40,6 @@ const PROJECTS = [
         cover: 'assets/img/projects/izdvorik.jpg',
         tags: ['HTML', 'CSS', 'JavaScript'],
         live: 'https://izdvorik.ru',
-        repo: '',
-        note: "Code in a partner's private repository.",
         featured: true
     },
     {
@@ -57,8 +54,21 @@ const PROJECTS = [
         cover: 'assets/img/projects/workshop-app.jpg',
         tags: ['JavaScript', 'Supabase', 'SQL', 'Vercel'],
         live: 'https://auto-parts-workshop.vercel.app',
-        repo: 'https://github.com/JessyGray/AutoPartsWorkshop',
         featured: true
+    },
+    {
+        id: 'qashtota-haifa',
+        title: 'Qashtota Haifa',
+        type: 'Dessert shop',
+        year: 2026,
+        category: ['Website', 'Next.js'],
+        summary: 'Website for a dessert shop in Haifa: full menu, scroll story and visit info in four languages.',
+        problem: 'The shop needed one place where guests can see the whole menu and find the shop. The site shows all 58 menu items with prices, opening hours, phone, Google Maps and Waze links, and a scroll story about how the dessert is made. It works in Hebrew, Arabic, English and Russian, with right-to-left layout for Hebrew and Arabic. A loyalty club with QR codes and a staff screen for adding points is built and waits for the database to be connected.',
+        role: 'Design, frontend, database schema and deploy.',
+        cover: '',
+        tags: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Vercel'],
+        live: 'https://qashtota-haifa.vercel.app',
+        featured: false
     },
     {
         id: 'orvekta',
@@ -73,7 +83,6 @@ const PROJECTS = [
         cover: 'assets/img/projects/orvekta.jpg',
         tags: ['n8n', 'Yandex Direct API', 'Yandex Metrica API', 'Claude API'],
         live: '',
-        repo: '',
         featured: false
     },
     {
@@ -88,7 +97,6 @@ const PROJECTS = [
         cover: '',
         tags: ['Node.js', 'Supabase', 'Postgres', 'LinkedIn OAuth 2.0', 'Vercel Cron'],
         live: 'https://jessy-linkedin-autopost.vercel.app',
-        repo: '',
         featured: false
     }
 ];

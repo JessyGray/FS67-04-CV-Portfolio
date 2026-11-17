@@ -199,7 +199,6 @@
         $('[data-modal-summary]', modal).textContent = p.summary;
         $('[data-modal-links]', modal).innerHTML = [
             p.live ? linkButton(p.live, 'Open site', true) : '',
-            p.repo ? linkButton(p.repo, 'Code on GitHub', !p.live) : '',
             p.note ? `<p class="modal__note">${esc(p.note)}</p>` : ''
         ].join('');
 
