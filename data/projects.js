@@ -30,6 +30,21 @@ const PROJECTS = [
         featured: true
     },
     {
+        id: 'qashtota-haifa',
+        title: 'Qashtota Haifa',
+        type: 'Dessert shop',
+        year: 2026,
+        category: ['Website', 'Next.js'],
+        summary: 'Website for a dessert shop on Derech HaAtzmaut 78 in Haifa, opened in March 2026.',
+        problem: 'The new shop needed one place where guests can see the menu with prices, the opening hours and how to get there. The site is in Hebrew (RTL) with Arabic, English and Russian versions, has a loyalty club sign up form, map and Waze links, and a link to Instagram.',
+        role: 'Design, frontend and deploy.',
+        cover: 'assets/img/projects/qashtota.jpg',
+        tags: ['Next.js', 'React', 'Vercel'],
+        live: 'https://qashtota-haifa.vercel.app',
+        repo: '',
+        featured: false
+    },
+    {
         id: 'izmailovsky-dvorik',
         title: 'Izmailovsky Dvorik',
         type: 'Restaurant',
